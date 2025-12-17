@@ -1,0 +1,27 @@
+# SE Insight Backend - Production Dependencies (Lightweight)
+
+# Core web framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# WebSocket support
+websockets==12.0
+
+# CORS and multipart support
+python-multipart==0.0.6
+
+# Audio processing and ASR
+numpy==1.24.3
+SpeechRecognition==3.10.0
+
+# SE terminology extraction
+keybert==0.8.3
+sentence-transformers==2.2.2
+scikit-learn==1.3.2
+
+# Utilities
+requests==2.31.0
+python-dotenv==1.0.0
+
+# Note: torch and openai-whisper are excluded for lighter deployment
+# The backend will use SpeechRecognition as the primary ASR engine

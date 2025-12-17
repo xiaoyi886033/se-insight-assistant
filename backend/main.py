@@ -1057,21 +1057,26 @@ async def startup_event():
     logger.info("SE Insight Backend started successfully with enhanced RAG engine")
 
 if __name__ == "__main__":
+    import os
     from config import DEFAULT_CONFIG
     
     server_config = DEFAULT_CONFIG["server"]
     
+    # Use environment variables for production deployment
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", "8000"))
+    
     logger.info("Starting SE Insight Backend Server...")
-    logger.info(f"Server: {server_config.host}:{server_config.port}")
+    logger.info(f"Server: {host}:{port}")
     logger.info(f"ASR Engine: {DEFAULT_CONFIG['asr'].preferred_engine}")
     logger.info(f"Whisper Available: {WHISPER_AVAILABLE}")
     logger.info(f"KeyBERT Available: {KEYBERT_AVAILABLE}")
     
     uvicorn.run(
         "main:app",
-        host=server_config.host,
-        port=server_config.port,
-        log_level=server_config.log_level,
-        reload=server_config.reload,
-        workers=server_config.workers
+        host=host,
+        port=port,
+        log_level="info",
+        reload=False,  # Disable reload in production
+        workers=1
     )
