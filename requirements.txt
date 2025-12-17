@@ -1,0 +1,16 @@
+# SE Insight Backend - Railway部署版本
+
+# 核心Web框架
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# WebSocket支持
+websockets==12.0
+
+# 基础依赖
+python-multipart==0.0.6
+requests==2.31.0
+python-dotenv==1.0.0
+
+# 轻量级ML支持（可选）
+numpy==1.24.3

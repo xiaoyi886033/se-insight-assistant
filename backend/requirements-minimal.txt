@@ -1,0 +1,15 @@
+# SE Insight Backend - 最小化依赖 (快速部署)
+
+# 核心Web框架
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# WebSocket支持
+websockets==12.0
+
+# 基础依赖
+python-multipart==0.0.6
+requests==2.31.0
+
+# 注意：暂时移除ML依赖以确保快速部署
+# 部署成功后可以逐步添加功能
