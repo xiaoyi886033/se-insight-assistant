@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SE Insight Control Panel</title>
+    <meta charset="utf-8">
+    <style>
+        body { 
+            width: 280px; 
+            padding: 16px; 
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h3 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            margin: 0;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        #toggleButton { 
+            width: 100%; 
+            padding: 12px 16px; 
+            font-size: 14px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #toggleButton:hover { 
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        #toggleButton:active {
+            transform: translateY(0);
+        }
+        
+        #toggleButton:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .status-info {
+            margin-top: 12px;
+            font-size: 11px;
+            text-align: center;
+            opacity: 0.7;
+            line-height: 1.3;
+        }
+        
+        .error-message {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            border-radius: 6px;
+            padding: 8px;
+            margin-top: 8px;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h3>SE Insight</h3>
+        <p>Real-time Learning Assistant</p>
+    </div>
+    
+    <button id="toggleButton">Start Transcription</button>
+    
+    <div class="status-info">
+        Click to start capturing audio from the current tab for real-time transcription and SE terminology analysis.
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
