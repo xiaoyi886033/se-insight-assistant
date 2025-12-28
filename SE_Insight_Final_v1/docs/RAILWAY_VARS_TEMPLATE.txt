@@ -1,0 +1,64 @@
+# SE Insight Railway Environment Variables Template
+# Copy these variable names and values into your Railway dashboard
+
+# ===== REQUIRED VARIABLES =====
+
+# Google Cloud Speech API (REQUIRED)
+# Get from: https://console.cloud.google.com/iam-admin/serviceaccounts?project=upm-se-assistant
+GCP_KEY_JSON={"type":"service_account","project_id":"upm-se-assistant","private_key_id":"...","private_key":"-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n","client_email":"se-insight-railway@upm-se-assistant.iam.gserviceaccount.com","client_id":"...","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs/se-insight-railway%40upm-se-assistant.iam.gserviceaccount.com"}
+
+# Gemini API for Chinese SE Term Explanations (REQUIRED)
+# Get from: https://makersuite.google.com/app/apikey
+GEMINI_API_KEY=your-gemini-api-key-here
+
+# ===== OPTIONAL VARIABLES =====
+
+# Email Archival Service (Optional - for session transcript emails)
+# Gmail App Password recommended: https://support.google.com/accounts/answer/185833
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASSWORD=your-app-password-here
+RECIPIENT_EMAIL=recipient@example.com
+
+# SMTP Configuration (Optional - defaults provided)
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+
+# ===== RAILWAY AUTO-SET VARIABLES =====
+# These are automatically set by Railway - DO NOT SET MANUALLY
+
+# PORT=8006 (Railway sets this automatically)
+# RAILWAY_ENVIRONMENT=production
+# RAILWAY_PROJECT_ID=your-project-id
+# RAILWAY_SERVICE_ID=your-service-id
+
+# ===== DEPLOYMENT CHECKLIST =====
+
+# 1. Set GCP_KEY_JSON with your complete service account JSON
+# 2. Set GEMINI_API_KEY with your Gemini API key
+# 3. (Optional) Set email variables for session archival
+# 4. Deploy and verify /health endpoint shows all services as configured
+# 5. Update extension config.js with your Railway URL
+# 6. Test end-to-end functionality
+
+# ===== HEALTH CHECK VERIFICATION =====
+# After deployment, check: https://your-app.railway.app/health
+# Expected response:
+# {
+#   "status": "healthy",
+#   "google_api_available": true,
+#   "client_initialized": true,
+#   "gcp_key_configured": true,
+#   "features": {
+#     "se_knowledge_base": 26,
+#     "email_archival": true,
+#     "gemini_api": true,
+#     "active_sessions": 0
+#   }
+# }
+
+# ===== SECURITY NOTES =====
+# - Never commit these values to git
+# - Use Railway's secure environment variable storage
+# - GCP_KEY_JSON can be raw JSON or base64 encoded
+# - Email passwords should be app-specific passwords, not account passwords
+# - All API keys should have appropriate scope restrictions

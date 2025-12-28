@@ -4,6 +4,7 @@ SE Insight Backend - Railway部署版本
 """
 
 import os
+import sys
 import logging
 import asyncio
 from typing import Dict, List
@@ -196,17 +197,24 @@ async def websocket_endpoint(websocket: WebSocket):
         manager.disconnect(websocket, client_id)
 
 if __name__ == "__main__":
-    # Railway会自动设置PORT环境变量
+    # Railway环境配置
     port = int(os.getenv("PORT", "8000"))
-    host = "0.0.0.0"
+    host = os.getenv("HOST", "0.0.0.0")
     
-    logger.info("Starting SE Insight Backend - Railway Version")
-    logger.info(f"Server: {host}:{port}")
+    logger.info("🚀 Starting SE Insight Backend - Railway Version")
+    logger.info(f"📡 Server: {host}:{port}")
+    logger.info(f"🐍 Python Version: {os.sys.version}")
+    logger.info(f"🌍 Environment: Railway")
     
-    uvicorn.run(
-        "main:app",
-        host=host,
-        port=port,
-        log_level="info",
-        reload=False
-    )
+    try:
+        uvicorn.run(
+            "main:app",
+            host=host,
+            port=port,
+            log_level="info",
+            reload=False,
+            access_log=True
+        )
+    except Exception as e:
+        logger.error(f"❌ Failed to start server: {e}")
+        raise
